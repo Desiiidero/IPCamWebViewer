@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-main {
+	@apply bg-green-800;
+}
+
+.text-dark {
+	@apply text-gray-950;
+}
+
+.text-light {
+	@apply text-white;
+}
+
+.filter .box {
+	@apply min-w-fit overflow-auto border-[1pt] border-sky-600 rounded-md px-3 py-1
+}
+
+.camera-wrap {
+	@apply grid grid-cols-5 gap-4
+}
+
+.camera-wrap .screen {
+	@apply w-auto h-auto
+}
+
+.camera-wrap .screen img {
+	@apply w-auto h-auto
+}
