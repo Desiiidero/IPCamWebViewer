@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import Modal from "./components/Modal.vue";
 
 let obj = new Map();
