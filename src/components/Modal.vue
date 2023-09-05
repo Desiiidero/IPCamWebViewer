@@ -9,16 +9,19 @@ defineProps({
     <Transition name="modal">
         <div v-if="show" class="modal-mask">
             <div class="modal-container">
-
-                <div class="modal-body">
-                    <slot name="body">
+<button class="modal-default-button" @click="$emit('close')"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+</svg></button>
+                <div class="modal-body">                        
+                    
+<slot name="body">
                         <img v-bind:src="url">
                     </slot>
                 </div>
 
                 <div class="modal-footer">
                     <slot name="footer">
-                        <button class="modal-default-button" @click="$emit('close')">Close</button>
+
                     </slot>
                 </div>
             </div>
@@ -27,26 +30,23 @@ defineProps({
 </template> 
   
 <style scoped>
-.modal-mask {
-    position: fixed;
-    z-index: 9998;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    transition: opacity 0.3s ease;
+.modal-mask{
+    @apply fixed z-50 top-0 left-0 w-full h-full flex justify-center items-center bg-gray-950/75 duration-200 ease-in-out
 }
 
-.modal-container {
-    width: 300px;
-    margin: auto;
-    padding: 20px 30px;
-    background-color: #fff;
-    border-radius: 2px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-    transition: all 0.3s ease;
+.modal-container{
+@apply relative w-auto h-2/3 flex justify-center items-center bg-white p-4 rounded-lg drop-shadow-2xl duration-300 ease-in-out
+}
+.modal-body img{
+@apply w-auto h-[inherit]
+}
+
+.modal-default-button{
+    @apply absolute right-5 top-5 w-10 h-10
+}
+
+.modal-default-button svg{
+    @apply stroke-white drop-shadow-lg
 }
 
 .modal-header h3 {
@@ -55,7 +55,7 @@ defineProps({
 }
 
 .modal-body {
-    margin: 20px 0;
+@apply w-full h-full flex justify-center items-center
 }
 
 .modal-default-button {
@@ -72,7 +72,7 @@ defineProps({
 
 .modal-enter-from .modal-container,
 .modal-leave-to .modal-container {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
 }
 </style>
