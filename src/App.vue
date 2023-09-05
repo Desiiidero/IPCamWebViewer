@@ -57,10 +57,6 @@ function selectedCamera(url: string) {
 	selectedUrl.value = url;
 	showModal.value = true;
 }
-
-function onError(event: Event) {
-	(event.target as ImgHTMLAttributes).src = errorImg;
-}
 </script>
 
 <template>
@@ -74,8 +70,7 @@ function onError(event: Event) {
 	<section class="camera pt-5 px-10 pb-20 min-h-screen">
 		<div class="camera-wrap">
 			<div v-for="item in itemList" v-on:click="selectedCamera(item)">
-				<img v-bind:src="item"
-					onerror="this.src='https://images.unsplash.com/photo-1555861496-0666c8981751?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3870&q=80';">
+				<img v-bind:src="item">
 			</div>
 		</div>
 	</section>
