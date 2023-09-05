@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { ImgHTMLAttributes, ref } from "vue";
 import Modal from "./components/Modal.vue";
-import errorImg from "./asset/error.jpg";
 
 let obj = new Map();
 obj.set("東區廠", [
