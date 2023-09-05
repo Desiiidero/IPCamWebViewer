@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ImgHTMLAttributes, ref } from "vue";
 import Modal from "./components/Modal.vue";
+import errorImg from "./asset/error.jpg";
 
 let obj = new Map();
 obj.set("東區廠", [
@@ -56,6 +57,10 @@ function selectedCamera(url: string) {
 	selectedUrl.value = url;
 	showModal.value = true;
 }
+
+function onError(event: Event) {
+	(event.target as ImgHTMLAttributes).src = errorImg;
+}
 </script>
 
 <template>
@@ -69,7 +74,8 @@ function selectedCamera(url: string) {
 	<section class="camera pt-5 px-10 pb-20 min-h-screen">
 		<div class="camera-wrap">
 			<div v-for="item in itemList" v-on:click="selectedCamera(item)">
-				<img v-bind:src="item">
+				<img v-bind:src="item"
+					onerror="this.src='https://images.unsplash.com/photo-1555861496-0666c8981751?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3870&q=80';">
 			</div>
 		</div>
 	</section>
@@ -81,10 +87,10 @@ function selectedCamera(url: string) {
 </template>
 
 <style scoped>
-
 .filter .box {
 	@apply min-w-fit overflow-auto border-[1pt] border-sky-600 rounded-md px-3 py-1
 }
+
 .camera-wrap {
 	@apply grid grid-cols-5 gap-4
 }
@@ -96,5 +102,4 @@ function selectedCamera(url: string) {
 .camera-wrap .screen img {
 	@apply w-auto h-auto
 }
-
 </style>
